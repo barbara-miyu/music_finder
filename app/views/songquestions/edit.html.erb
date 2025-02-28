@@ -1,0 +1,7 @@
+<div class="container">
+  <%= form_for @songquestion do |t| %>
+    <%= t.label :"質問内容" %>
+    <%= t.text_field :content, :size => 100 %> 
+    <%= t.submit "編集完了" %>
+  <% end %>
+</div>

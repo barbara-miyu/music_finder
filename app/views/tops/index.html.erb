@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'tops', :media => "all" %>
+<div class="first-block">
+  <div class="title-container">
+    <h3><%= link_to "気分にぴったりの音楽を探そう", songs_path %></h3>
+  </div> 
+  <div class="illustration">
+  </div>
+</div>
+
+<div class="second-block">
+  <p class="info-title">
+   <b><span>musicfinderでできること</span></b>
+  </p>
+  <div class="img-container">
+    <div class="img1"></div>
+    <div class="img2"></div>
+    <div class="img3"></div>
+  </div>
+  <div class="text-container">
+    <p class="info-text">
+      <b><%= link_to "①気分に合わせた曲が探せる", songs_path %></b>
+    </p>
+    <p class="info-text">
+      <b><%= link_to "②アーティストや曲について質問できる", new_songquestion_path %></b>
+    </p>
+    <p class="info-text">
+      <b><%= link_to "③好きな音楽を投稿でシェアできる", new_song_path %></b>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+// Place all the styles related to the tops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.first-block {
+    background-color: #f7cac9;
+    background-size: cover;
+    width: 100%;
+    height: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .title-container {
+    text-align: center;
+  }
+  h3 {
+    font-size: 40px;
+  }
+    h3 a {
+      color: #1a39a9; 
+      text-decoration: none; 
+    }
+    h3 a:hover {
+      color:#707fb4
+    }
+  .illustration {
+    height: 500px;
+    background-image: url("Music-rafiki.png");
+    background-size: cover;
+    width: 35%;
+    text-align: center;
+  }
+.second-block {
+    text-align: center;
+    margin: 40px 100px 100px;
+    height: 500px;
+  }  
+  .second-block p b span{
+    font-size: 32px;
+    font:bold;
+  }
+  .second-block p b {
+    font-size: 22px;
+    font: bold;
+  }
+  .info-title {
+      font-size: 32px;
+      text-align: center;
+  }
+    .img-container {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+    }
+      .img1 {
+        height: 400px;
+        background-image: url("Search engines-rafiki.png");
+        background-size: cover;
+        width: 30%;
+        text-align: center;
+      }
+      .img2 {
+        height: 400px;
+        background-image: url("Questions-rafiki.png");
+        background-size: cover;
+        width: 30%;
+        text-align: center;
+      }
+      .img3 {
+        height: 400px;
+        background-image: url("Posts-rafiki.png");
+        background-size: cover;
+        width: 30%;
+        text-align: center;
+      }
+    .text-container {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+    }
+      .info-text {
+        font-size: 20px;
+        margin-bottom: 20px;
+        width: 30%;
+      }
+      .info-text a {
+        color: #1a39a9; 
+        text-decoration: none; 
+      }
+      .info-text a:hover {
+        color:#707fb4
+      }
+p {
+  margin-left: 40px;
+}
+  
+  

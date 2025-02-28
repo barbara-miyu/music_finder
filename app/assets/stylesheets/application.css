@@ -1,0 +1,102 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ * {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    background-color: #FFF2EC;
+    min-height: 100vh;
+    font-family: 'Noto Sans JP', sans-serif, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+      Meiryo, "ＭＳ Ｐゴシック" ;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #1a30a0
+  }
+
+  .container {
+    width: 50%;
+    margin: 10px auto;
+    margin-bottom: 40px;
+  }
+  .info {
+    text-align: end;
+    font: bold;
+  }
+  
+  header {
+    background-color: #fee4dd;
+    height: 80px;
+    width: 100%;
+    font-family: 'Noto Sans JP';
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header a {
+    color: #1a39a9; 
+    text-decoration: none; 
+  }
+  header a:hover {
+    color:#707fb4
+  }
+  header h1 {
+    margin-left: 40px;
+    color:#1a39a9;
+  }
+  .header-list {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+  header ul {
+    display: flex; 
+  }
+  header li {
+    list-style: none;
+    margin-right: 40px;
+  }
+  header span:hover {
+    color:#f7cac9
+  }
+  .user-list {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+  .user-list a {
+    color: #fb8f83;
+    text-decoration: none;
+  }
+  .user-list a:hover {
+    color: #f8c0ba
+  }
+
+  footer {
+    color:white;
+    height: 30px;
+    background-color: #1a39a9;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+  }
+    footer p {
+      margin-left: 40px;
+    }

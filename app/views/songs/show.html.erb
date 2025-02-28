@@ -1,0 +1,67 @@
+<%= stylesheet_link_tag 'show', :media => "all" %>
+
+<div class="container">
+<h3>投稿詳細</h3>
+
+<div class="song">
+  <p><a href="/users/<%= @song.user.id %>"><%= @song.user.name %></a></p>
+  <b><p><%= @song.title %></p></b>
+  <p><%= @song.artist %></p>
+  <p><%= @song.content %></p>
+  
+
+  <% @song.tags.each do |tag| %>
+    <p><span>#<%= tag.name %></span><p>
+  <% end %>
+  <p><%= @song.created_at %></p>
+  <% if user_signed_in? %>
+    <% if current_user.already_liked?(@song) %>
+      <%= link_to song_like_path(@song), method: :delete do %>
+        <p><i class="fas fa-heart"></i><%= @song.likes.count %></p>
+      <% end %>
+    <% else %>
+      <%= link_to song_likes_path(@song), method: :post do %>
+        <p><i class="fas fa-heart"></i><%= @song.likes.count %></p>
+      <% end %>
+    <% end %>
+  <% else %>
+      <p><i class="fas fa-heart"></i><%= @song.likes.count %></p>
+  <% end %>
+
+  <p><i class="fab fa-youtube"></i><%= link_to "youtubeで聞く", "https://m.youtube.com/results?sp=mAEA&search_query=#{@song.title}", target: :_blank, rel: "noopener noreferrer" %></p>
+  <div class="info">
+    <% if user_signed_in? && current_user.id == @song.user_id %>
+      <%= link_to "削除", song_path(@song.id), method: :delete %>
+      <%= link_to "編集する", edit_song_path(@song.id) %>
+    <% end %>
+  </div>
+</div>
+
+<div class="comment-wrapper">
+<h3>コメント一覧</h3>
+  <% @comments.each do |c| %>
+    <div>
+    <a href="/users/<%= c.user.id %>"><%= c.user.name unless c.user.blank? %></a>
+      <br>
+      <%= c.comment %>
+      <br>
+      <%= link_to "削除", song_comment_path(c.id), method: :delete %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@song, @comment], local: true) do |f| %>
+      <%= f.text_area :comment %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="info"> 
+  <%= link_to "投稿一覧に戻る", songs_path %>
+</div>
+
+</div>

@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag 'show', :media => "all" %>
+
+<div class="container">
+<h3>質問詳細</h3>
+<div class="songquestion">
+  <p><%= @songquestion.content %></p>
+  <p><%= @songquestion.created_at %></p>
+  <div class="info">
+  <% if user_signed_in? && current_user.id == @songquestion.user_id %>
+    <%= link_to "編集する", edit_songquestion_path(@songquestion.id) %>
+  <% end %>
+  </div>
+</div>
+
+<div class="songanswer-wrapper">
+<h3>回答一覧</h3>
+  <% @songanswers.each do |a| %>
+    <div>
+      <a href="/users/<%= a.user.id %>"><%= a.user.name unless a.user.blank? %></a>
+      <br>
+      <%= a.content %>
+      <br>
+      <% if user_signed_in? && current_user.id == a.user_id %>
+        <%= link_to "削除", songquestion_songanswer_path(a.id), method: :delete %>
+      <% end %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@songquestion, @songanswer], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-songanswers"></i> 回答する
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+</div>
+

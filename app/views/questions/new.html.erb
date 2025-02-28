@@ -1,0 +1,13 @@
+
+<h3>新規質問</h3>
+<%= form_for @question do |t| %>
+  <div class="field">
+    <%= t.label :質問内容 %>
+    <%= t.text_field :content, :size => 50 %>
+  </div>
+
+  <%= t.submit "質問を投稿する" %>
+<% end %>
+
+<%= link_to "質問一覧に戻る", songs_path %>
+<%= link_to "曲一覧に戻る", songs_path %>

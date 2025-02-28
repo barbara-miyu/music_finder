@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<div class="post-container">
+<%= form_for @song do |t| %>
+  <div class="title">曲投稿フォーム</div>
+    <%= t.label :曲名 %>
+      <br>
+      <%= t.text_field :title, :size => 10 %>
+      </br>
+
+  <div class="field">
+    <%= t.label :アーティスト名 %>
+    <%= t.text_field :artist, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <%= t.label :感想 %>
+    <%= t.text_field :content, :size => 60 %>
+  </div>
+
+  <div class="form_group">
+    <span>どんな気分になる曲？</span> 
+    <div class="tag">
+    <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class='form-check'>
+          <%= tag.label class: 'form-check-label' do %>
+            <label><%= tag.check_box class: 'form-check-input' %>
+            <span><%= tag.text %></span></label>
+          <% end %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+  
+  <%= t.submit "曲を投稿する" %>
+  <br>
+<% end %>
+</div>
+
+<%= link_to "投稿一覧に戻る", songs_path %>

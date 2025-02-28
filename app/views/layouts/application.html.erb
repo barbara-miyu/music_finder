@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>musicfinder</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <h1><i class="fas fa-music"></i><%= link_to " musicfinder", tops_path %></h1>
+      <div class="header-list">
+      <ul> 
+        <li><%= link_to "曲検索/一覧",songs_path %></li>
+        <li><%= link_to "曲投稿",new_song_path %></li>
+        <li><%= link_to "質問一覧",songquestions_path %></li>
+        <li><%= link_to "質問投稿",new_songquestion_path %></li>
+          <% if user_signed_in? %>
+        <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+          <% end %>
+        <div class="user-list">
+            <% if user_signed_in? %>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+        </div>
+      </ul>
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+    <p>Copyright © musicfinder All Rights Reserved.</p>
+    </footer> 
+  </body>
+</html>

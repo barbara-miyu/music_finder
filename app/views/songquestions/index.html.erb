@@ -1,0 +1,19 @@
+<div class="songquestions-container">
+<h3>質問投稿一覧</h3>
+  <% @songquestions.each do |f| %>
+    <div class="songquestion">
+      <%= f.content %>
+      <%= f.created_at %>
+      <div class="info">
+        <% if user_signed_in? && current_user.id == f.user_id %>
+          <%= link_to "編集", edit_songquestion_path(f.id) %>
+          <%= link_to "削除", songquestion_path(f.id), method: :delete %>
+        <% end %>
+      </div>
+      <i class="far fa-comment"></i><%= link_to "回答", songquestion_path(f.id) %> 
+    </div>
+  <% end %>
+  <div class="info">
+    <%= link_to "質問一覧に戻る", songs_path %>
+  </div>
+</div>   

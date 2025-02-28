@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_for @song do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :size => 100 %>
+    <%= f.label :content %>
+    <%= f.text_field :content, :size => 100 %> 
+    <%= f.submit "編集完了" %>
+  <% end %>
+</div>

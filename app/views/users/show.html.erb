@@ -1,0 +1,65 @@
+<%= stylesheet_link_tag 'users', :media => "all" %>
+
+<div class="user-container">
+  <h1>マイページ</h1>
+  <div class=user-content>
+    <div class="profile-container">
+      <div class="profile-image">
+        <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+      </div>
+      <div class="profile-content">
+        <p>名前 : <%= @user.name %></p>
+        <p>メールアドレス : <%= @user.email %></p>
+        <p>プロフィール : <%= @user.profile %></p>
+      </div>
+      <div class="info">
+        <% if current_user.id == @user.id %>
+          <p><%= link_to "編集する", edit_user_registration_path %></p>
+        <% end %>
+      </div>
+    </div>
+  
+    <div class="userinfo-list">
+      <div class="user-songs">
+        <h3>ユーザーの曲投稿一覧</h3>
+        <% @user.songs.each do |t| %>
+          <div class="user-box">
+          <b><%= t.title %></b>/
+          <%= t.artist %>/
+          <%= t.content %>
+          <% t.tags.each do |tag| %>
+            #<%= tag.name %>
+          <% end %> 
+          </div>
+        <% end %>
+      </div>
+
+      <div class="user-likes">
+        <h3>いいねした投稿一覧</h3>
+        <% @user.liked_songs.each do |t| %>
+          <div class="user-box">
+          <b><%= t.title %></b>/
+          <%= t.artist %>/
+          <%= t.content %>
+          <% t.tags.each do |tag| %>
+            #<%= tag.name %>
+          <% end %> 
+          </div>
+        <% end %>
+      </div>
+
+      <div class="user-questions">
+        <h3>ユーザーの質問一覧</h3>
+        <% @user.songquestions.each do |t| %>
+          <div class="user-box">
+          <%= t.content %>
+          <i class="far fa-comment"></i><%= link_to "回答", songquestion_path(t.id) %> 
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="user-info">
+    <%= link_to "投稿一覧に戻る", songs_path %>
+  </div>
+</div>

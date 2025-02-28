@@ -1,0 +1,41 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.user-container {
+  width: 70%;
+  margin: 10px auto;
+  margin-bottom: 40px;
+}
+  .user-content {
+    display:flex;
+    width:100%;
+  }
+    .profile-container {
+      width: 25%;
+      margin-top: 20px;
+      margin-right: 20px;
+    }
+    .userinfo-list {
+      width: 75%;
+    }
+      .user-songs, .user-likes, .user-questions {
+        width: 100%;
+        border-top: solid #ecbaba;
+        margin-top: 20px;
+        padding-top: 20px;
+      }
+        h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+          }
+        .user-box {
+          margin-left: 40px;
+        }
+      .user-info {
+        text-align: end;
+      }
+p {
+  margin-left: 0px;
+}

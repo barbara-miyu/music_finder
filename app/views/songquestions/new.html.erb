@@ -1,0 +1,13 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<div class="post-container">
+<div class="title">質問投稿フォーム</div>
+<%= form_for(@songquestion, :url => {controller:"songquestions", action:"create"}) do |t| %>
+  <div class="field">
+    <%= t.label :質問内容 %>
+    <%= t.text_field :content, :size => 50 %>
+  </div>
+
+  <%= t.submit "質問を投稿する" %>
+<% end %>
+</div>

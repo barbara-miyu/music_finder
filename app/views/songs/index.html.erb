@@ -1,0 +1,59 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<div class="tag-search">
+<h3>曲を探す</h3>
+  <div class="tag">
+    <%= form_tag({controller:"songs",action:"index"}, method: :get) do %>
+      <% @tags.each do |t| %>
+        <label><%= check_box :tag_ids, t.name %><span><%= t.name %></span></label>
+      <% end %>
+  </div>
+  <div class="tag-submit">
+    <%= submit_tag 'タグ検索' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="search">
+<%= form_tag({controller:"songs",action:"index"}, method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "キーワード検索" %>
+<% end %>
+</div>
+
+<div class="songs-container">
+<h3>曲投稿一覧</h3>
+  <% @songs.each do |t| %>
+    <div class="song">
+      <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+      <p><b><%= t.title %></b>/<%= t.artist %>/<%= t.content %></p>
+      <% t.tags.each do |tag| %>
+        <p>#<%= tag.name %></p>
+      <% end %> 
+      <p><%= t.created_at %></p>
+
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+          <%= link_to song_like_path(id: t.id, song_id: t.id), method: :delete do %>
+            <p><i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+        <% else %>
+          <%= link_to song_likes_path(id: t.id, song_id: t.id), method: :post do %>
+            <p><i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+        <% end %> 
+        <i class="far fa-comment"></i><%= link_to "コメント", song_path(t.id) %>
+      <% end %>
+      <i class="fab fa-youtube"></i><%= link_to "youtubeで聞く", "https://m.youtube.com/results?sp=mAEA&search_query=#{t.title}", target: :_blank, rel: "noopener noreferrer" %></p>
+      <div class="songs-info">
+        <% if user_signed_in? && current_user.id == t.user_id %>
+          <%= link_to "編集", edit_song_path(t.id) %>
+          <%= link_to "削除", song_path(t.id), method: :delete %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="page_top"><a href="#"></a></div>
+ 
