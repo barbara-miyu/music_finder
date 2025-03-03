@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_07_26_112603) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.integer "song_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2021_07_26_112603) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "song_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "song_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["song_id"], name: "index_likes_on_song_id"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 2021_07_26_112603) do
   end
 
   create_table "post_tags", force: :cascade do |t|
-    t.integer "song_id", null: false
-    t.integer "tag_id", null: false
+    t.bigint "song_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["song_id"], name: "index_post_tags_on_song_id"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 2021_07_26_112603) do
   end
 
   create_table "song_types", force: :cascade do |t|
-    t.integer "song_id", null: false
-    t.integer "type_id", null: false
+    t.bigint "song_id", null: false
+    t.bigint "type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["song_id"], name: "index_song_types_on_song_id"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 2021_07_26_112603) do
 
   create_table "songanswers", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id", null: false
-    t.integer "songquestion_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "songquestion_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["songquestion_id"], name: "index_songanswers_on_songquestion_id"

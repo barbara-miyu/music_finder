@@ -1,0 +1,27 @@
+services:
+  # Railsアプリケーションのコンテナ
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 3001:3000
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - RAILS_ENV=${RAILS_ENV}
+    depends_on:
+      - db
+
+  # PostgreSQLのコンテナ
+  db:
+    image: postgres:13
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+
+volumes:
+  postgres_data: {}
+      
